@@ -1,10 +1,10 @@
 # Sistema Bancário Simples em Python 
 
 ### O que é um banco?
-Imagina que um banco é como uma casa mágica para o seu dinheiro. Você pode guardar seu dinheiro lá e tirar um pouco quando quiser. Neste jogo, você pode fazer três coisas mágicas:
+Imagina que um banco é como uma casa mágica para o seu dinheiro. Você pode guardar seu dinheiro lá e tirar um pouco quando quiser. Neste sistema, você pode fazerá fazer três operações:
 
-1. **Depositar:** É como colocar mais dinheiro na sua casa mágica.
-2. **Sacar:** É como tirar um pouco de dinheiro da sua casa mágica.
+1. **Depositar:** É como colocar mais dinheiro na sua conta bancária.
+2. **Sacar:** É como tirar um pouco de dinheiro da sua conta bancária.
 3. **Ver o extrato:** É como olhar para um livro de história que mostra tudo o que você fez com seu dinheiro.
 
 
@@ -12,7 +12,7 @@ Imagina que um banco é como uma casa mágica para o seu dinheiro. Você pode gu
 
 **O que você precisa:**
 
-* **Python:** Uma linguagem de programação muito legal para criar programas como este. Você pode baixar o Python gratuitamente em https://www.python.org/downloads/
+* **Python (versão superior 3.0):** Uma linguagem de programação muito legal para criar programas como este. Você pode baixar o Python gratuitamente em https://www.python.org/downloads/
 * **Um editor de texto:** Um programa para escrever código, como o Visual Studio Code, PyCharm ou até mesmo o bloco de notas.
 
 **Como funciona:**
