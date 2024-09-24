@@ -1,16 +1,23 @@
+import datetime
+import pytz
+
 class ContaBancaria:
     def __init__(self):
         self.saldo = 0.0
         self.extrato = []
-        self.saques_diarios = 0
+        self.transacoes_diarias = 0
+        self.timezone = pytz.timezone('America/Sao_Paulo')  # Substitua pelo seu fuso horário
 
     def depositar(self):
+        if self.transacoes_diarias >= 10:
+            print("Você atingiu o limite de transações diárias.")
+            return
         while True:
             try:
                 valor = float(input("Qual o valor será depositado? "))
                 if valor > 0:
                     self.saldo += valor
-                    self.extrato.append(f"Depósito: R$ {valor:.2f}")
+                    self.registrar_transacao(f"Depósito: R$ {valor:.2f}")
                     break
                 else:
                     print("Valor inválido. O valor do depósito deve ser positivo.")
@@ -18,8 +25,8 @@ class ContaBancaria:
                 print("Valor inválido. Por favor, digite um número.")
 
     def sacar(self):
-        if self.saques_diarios >= 3:
-            print("Você atingiu o limite de saques diários.")
+        if self.transacoes_diarias >= 10:
+            print("Você atingiu o limite de transações diárias.")
             return
         while True:
             try:
@@ -27,8 +34,7 @@ class ContaBancaria:
                 if valor > 0 and valor <= 500:
                     if valor <= self.saldo:
                         self.saldo -= valor
-                        self.extrato.append(f"Saque: R$ {valor:.2f}")
-                        self.saques_diarios += 1
+                        self.registrar_transacao(f"Saque: R$ {valor:.2f}")
                         break
                     else:
                         print("Saldo insuficiente para saque!")
@@ -39,9 +45,14 @@ class ContaBancaria:
 
     def imprimir_extrato(self):
         print("\n=== Extrato ===")
-        for operacao in self.extrato:
-            print(operacao)
+        for operacao, data_hora in self.extrato:
+            print(f"{data_hora}: {operacao}")
         print(f"Saldo atual: R$ {self.saldo:.2f}")
+
+    def registrar_transacao(self, operacao):
+        agora = datetime.datetime.now(self.timezone)
+        self.extrato.append((operacao, agora.strftime("%d/%m/%Y %H:%M:%S")))
+        self.transacoes_diarias += 1
 
 # Criando uma instância da conta
 conta = ContaBancaria()
@@ -64,4 +75,4 @@ while True:
     elif opcao == 4:
         break
     else:
-        print("Opção inválida.") 
+        print("Opção inválida.")
